@@ -7,7 +7,7 @@ GAME_LEVELS = {
   }
 
 GAME_LEVELS_CONVERT = {
-    5 : "Short",
-    8 : "Medium",      
-    10 : "Long" 
+    5 : "Короткая",
+    8 : "Средняя",      
+    10 : "Длинная" 
   }

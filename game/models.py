@@ -2,6 +2,8 @@
 import random
 
 class Player:
+    """Этот класс создаёт игрока и бросает кубик"""
+
     def __init__(self, name):
         self.name = name
         self.score = 0
@@ -20,6 +22,8 @@ class Player:
 
 
 class Computer(Player):
+    """Этот класс наследуется от Player"""
+    
     def __init__(self):
         super().__init__("Computer")
 
