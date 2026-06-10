@@ -1,24 +1,24 @@
 # Основной файл, содержащий игровую логику
 from game.models import Player, Computer
 from game.exceptions import  InvalidRollError
-from game.score import save_result
+from game.score import SevaResult
 from game.settings import GAME_LEVELS, GAME_LEVELS_CONVERT
 import datetime
 
 def get_player_name():
     """Этот блок функций запрашивает имя игрока!"""
 
-    user_name = input("Введите своё имя: ")
     while True:
+        user_name = input("Введите своё имя: ")
         if user_name == "":
             print("Ошибка: поле не может быть пустым!")
-            user_name = input("Введите своё имя: ")
+
         elif not user_name[0].isupper():
             print("Имя должно начинаться с большой буквы!")
-            user_name = input("Пожалуйста, введите имя ещё раз:  ")
+
         elif not user_name.isalpha():
             print("Имя может содержать только буквы!")
-            user_name = input("Пожалуйста, введите имя ещё раз:  ")
+
         else:
             print(f"Здравствуйте. 👋 {user_name}")
             break
@@ -41,7 +41,7 @@ def get_game_level():
     return raunds
 
 
-def start_game():
+def game():
     """Эта функция запускает игру!"""
     total_score = 0
 
@@ -62,11 +62,12 @@ def start_game():
                 if diff == 0:
                     print("Ничья. Будет выполнен переброс кубика.")
                     continue
+
                 elif diff > 0:
                     print("Раунд окончен!!!")
-
                     print(f"Игрок {name} одержал победу.")
                     break
+
                 else:
                     print("Раунд окончен!!!")
 
@@ -76,13 +77,14 @@ def start_game():
                 print(InvalidRollError("Ошибка. Нажмите Enter, чтобы начать игру!"))
 
         total_score += diff
-        print(f"Разница в {diff} очках.")
+    print(f"Разница в {diff} очках.")
     print(f"Дата: {datetime.datetime.now().strftime("%Y - %m - %d  %H:%M:%S")}")
     print(f"Игрок: {name}")
     print(f"Количество: {rounds}")
     print(f"Итоговый счет: {total_score}")
     print("---------------------------------")
-    save_result(name,rounds,total_score)
+    get_seva = SevaResult()
+    get_seva.save_results(name,rounds,total_score)
     
     
 

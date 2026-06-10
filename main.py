@@ -1,6 +1,6 @@
 # Основной файл, который управляет игрой:
-from game.game import start_game
-from game.score import get_results
+from game.game import game
+from game.score import SevaResult
 
 def start_game():
     """Эта функция управляет всей игрой"""
@@ -11,9 +11,10 @@ def start_game():
     while True:
         user_input = int(input("Выберите 1 – 3: "))
         if user_input == 1:
-            get_results()
+            score_manager = SevaResult()
+            score_manager.get_results()
         elif user_input == 2:
-            start_game()
+            game()
         elif user_input == 3:
             print("До свидания!")
             break
